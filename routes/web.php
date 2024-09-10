@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\IpManagementController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,5 +35,11 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get('/ip-management', [IpManagementController::class, 'index'])->name('posts.index');
+Route::get('/ip-management/create', [IpManagementController::class, 'create'])->name('posts.create');
+Route::post('/ip-management', [IpManagementController::class, 'store'])->name('posts.store');
+Route::put('/ip-management/{id}/edit', [IpManagementController::class, 'edit'])->name('posts.edit');
+Route::put('/ip-management/{post}', [IpManagementController::class, 'update'])->name('posts.update');
 
 require __DIR__.'/auth.php';
