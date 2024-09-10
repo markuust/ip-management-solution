@@ -29,9 +29,17 @@ class IpManagementController extends Controller
             'notes' => 'nullable|string',
         ]);
 
-        IpManagement::create($request->all());
+       // Create the new IP record in the database and store it in a variable
+        $newIp = IpManagement::create($request->all());
 
-        return redirect()->route('posts.index');
+        // Redirect with the new IP record using Inertia
+        // return redirect()->route('posts.index')->with([
+        //     'newIp' => $newIp
+        // ]);
+
+        return Inertia::render('Posts/Index', [
+            'newIp' => $newIp,
+        ]);
     }
 
     // Show form to edit ip address
@@ -58,7 +66,11 @@ class IpManagementController extends Controller
             'notes' => $request->input('notes'),
         ]);
 
-        return redirect()->route('posts.index')->with('success', 'IP Address updated successfully.');
+        // return redirect()->route('posts.index')->with('success', 'IP Address updated successfully.');
+
+        return Inertia::render('Posts/Index', [
+            'NewIpAddress' => $ipAddress,
+        ]);
     }
 
 }

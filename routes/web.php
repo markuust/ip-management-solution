@@ -34,12 +34,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+
+    Route::get('/ip-management', [IpManagementController::class, 'index'])->name('posts.index');
+    Route::get('/ip-management/create', [IpManagementController::class, 'create'])->name('posts.create');
+    Route::post('/ip-management', [IpManagementController::class, 'store'])->name('posts.store');
+    Route::put('/ip-management/{id}/edit', [IpManagementController::class, 'edit'])->name('posts.edit');
+    Route::put('/ip-management/{id}', [IpManagementController::class, 'update'])->name('posts.update');
+
 });
 
-Route::get('/ip-management', [IpManagementController::class, 'index'])->name('posts.index');
-Route::get('/ip-management/create', [IpManagementController::class, 'create'])->name('posts.create');
-Route::post('/ip-management', [IpManagementController::class, 'store'])->name('posts.store');
-Route::put('/ip-management/{id}/edit', [IpManagementController::class, 'edit'])->name('posts.edit');
-Route::put('/ip-management/{post}', [IpManagementController::class, 'update'])->name('posts.update');
 
 require __DIR__.'/auth.php';
