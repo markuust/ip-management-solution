@@ -42,7 +42,7 @@ export default {
                 onSuccess: (response) => {
                     console.log(response);
                     // Emit 'update' event with the updated IP address to the parent
-                    emit('update', response.props.NewIpAddress);  // Adjust 'updatedIp' according to your backend response
+                    emit('update', response.props.NewIpAddress);  
                     closeModal();
                 },
             });
@@ -58,6 +58,5 @@ export default {
 </script>
 
 <style scoped>
-/* Optional: you can add extra styles here */
 </style>
   

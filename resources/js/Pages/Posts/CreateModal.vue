@@ -43,7 +43,6 @@ setup(props, { emit }) {
                 emit('create', response.props.newIp);  // Emit the new IP address object to the parent
                 closeModal();
             },
-            // You might want to handle errors here as well
         });
     };
 
@@ -57,6 +56,5 @@ setup(props, { emit }) {
 </script>
 
 <style scoped>
-/* Optional: you can add extra styles here */
 </style>
   
